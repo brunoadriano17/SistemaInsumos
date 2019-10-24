@@ -15,8 +15,7 @@ class CategoriaInsumoController extends Controller
     }
 
     public function index(){
-        $categorias = CategoriaInsumo::where('user_id', Auth::id())->get();
-        return view('insumo.categoria.index', compact('categorias'));
+        return redirect('/insumo');
     }
 
     public function list(){

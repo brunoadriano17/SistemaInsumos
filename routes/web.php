@@ -19,6 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/insumo', 'InsumoController@index');
-
 Route::resource('/insumo/categoria', 'CategoriaInsumoController');
+Route::resource('/insumo', 'InsumoController');

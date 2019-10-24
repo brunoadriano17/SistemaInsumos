@@ -63,7 +63,11 @@
             <div class="card">
                 <div class="card-header">Insumos</div>
                 <div class="card-body">
-
+                <div class="row">
+                        <div class="col-12 text-right">
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastroInsumo">Cadastrar</button>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -93,6 +97,63 @@
       </div>
       <div class="modal-footer">
         <button id="btnCadCategoria" type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('formCategoria').submit();">Cadastrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cadastroInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formInsumo" method="POST" action="{{url('/insumo')}}">
+        @csrf
+        <input id="formMethod" type="hidden" name="_method" value="POST">
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="nome">Nome</label>
+                    <input id="nomeCategoria" type="text" max="45" name="nome" required placeholder="Insira o nome da categoria" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="categoria_id">Categoria</label>
+                    <select name="categoria_id" class="form-control">
+                        @foreach($categorias as $categoria)
+                            <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                    <label for="unidade_id">Unidade de Medida</label>
+                    <select name="unidade_id" class="form-control">
+                        @foreach($unidades as $unidade)
+                            <option value="{{$unidade->id}}">{{$unidade->nome}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label for="custo">Custo</label>
+                    <input type="text" placeholder="R$0.00" name="custo" class="form-control">
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label for="custo">Quantidade</label>
+                    <input type="text" placeholder="Insira a quantidade utilizada" name="quantidade" class="form-control">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCadInsumo" type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('formInsumo').submit();">Cadastrar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
