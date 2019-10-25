@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Insumo extends Model
 {
     protected $fillable = [
-        'nome', 'quantidade', 'custo', 'categoria_id', 'unidade_id', 'user_id'
+        'nome', 'custo', 'categoria_id', 'unidade_id', 'user_id'
     ];
 
     public function Usuario(){

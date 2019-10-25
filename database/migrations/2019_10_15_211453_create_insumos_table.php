@@ -16,7 +16,6 @@ class CreateInsumosTable extends Migration
         Schema::create('insumos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome', 45);
-            $table->float('quantidade');
             $table->decimal('custo', 14,2);
             $table->integer('categoria_id')->unsigned()->index('fk_categoria_insumo');
             $table->integer('unidade_id')->unsigned()->index('fk_unidade');

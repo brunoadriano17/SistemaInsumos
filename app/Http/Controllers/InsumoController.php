@@ -19,7 +19,8 @@ class InsumoController extends Controller
     public function index(){
         $unidades = UnidadeMedida::all();
         $categorias = CategoriaInsumo::where('user_id', Auth::id())->get();
-        return view('insumo.categoria.index', compact('categorias', 'unidades'));
+        $insumos = Insumo::where('user_id', Auth::id())->get();
+        return view('insumo.categoria.index', compact('categorias', 'unidades', 'insumos'));
     }
 
     public function store(Request $req){
@@ -28,7 +29,6 @@ class InsumoController extends Controller
             Insumo::create(
                 [
                     'nome' => $req->nome,
-                    'quantidade' => $req->quantidade,
                     'custo' => $req->custo,
                     'categoria_id' => $req->categoria_id,
                     'unidade_id' => $req->unidade_id,
@@ -48,7 +48,9 @@ class InsumoController extends Controller
         try{
             $insumo = Insumo::findOrFail($id);
             if($insumo->user_id == Auth::id()){
-                $insumo->update($req->all());
+                $insumo->nome = $req->nome;
+                $insumo->custo = $req->custo;
+                $insumo->update();
                 DB::commit();
                 return back()->with('success', 'Insumo alterado com sucesso!');
             }
