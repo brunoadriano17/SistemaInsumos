@@ -13,8 +13,8 @@ class CreateInsumosTable extends Migration
      */
     public function up()
     {
-        Schema::create('insumos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('insumo', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('nome', 45);
             $table->decimal('custo', 14,2);
             $table->integer('categoria_id')->unsigned()->index('fk_categoria_insumo');
@@ -32,6 +32,6 @@ class CreateInsumosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insumos');
+        Schema::dropIfExists('insumo');
     }
 }

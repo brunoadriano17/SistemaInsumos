@@ -14,7 +14,7 @@ class CreateCategoriaInsumosTable extends Migration
     public function up()
     {
         Schema::create('categoria_insumos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nome', 45);
             $table->integer('user_id')->unsigned()->index('fk_usuario');
             $table->timestamps();

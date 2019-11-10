@@ -55,14 +55,16 @@
                                 </tbody>
                             </table>
                         @else 
-                            <h4>Não há categorias cadastradas</h4>
+                            <div class="col-12 text-center">
+                                <h4>Não há categorias cadastradas</h4>
+                            </div>
                         @endif
                         </div>
                         </div>
 
                     </div>
             </div>
-        </div>
+            </div>
         <div class="col-lg-6 col-sm-12">
             <div class="card">
                 <div class="card-header">Insumos</div>
@@ -118,7 +120,9 @@
                             </tbody>
                         </table>
                     @else
-                        <h4>Não há insumos cadastrados</h4>
+                    <div class="col-12 text-center">
+                                <h4>Não há insumos cadastradas</h4>
+                            </div>
                     @endif
                 </div>
                 </div>

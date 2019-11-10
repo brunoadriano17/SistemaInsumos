@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Insumo extends Model
 {
+    protected $table = 'insumo';
+
     protected $fillable = [
         'nome', 'custo', 'categoria_id', 'unidade_id', 'user_id'
     ];
@@ -20,5 +22,9 @@ class Insumo extends Model
 
     public function Unidade(){
         return $this->belongsTo('App\UnidadeMedida', 'unidade_id');
+    }
+
+    public function produtos(){
+        return $this->belongsToMany('App\Insumo', 'insumo_produto');
     }
 }

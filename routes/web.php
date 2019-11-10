@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/insumo/categoria', 'CategoriaInsumoController');
 Route::resource('/insumo', 'InsumoController');
+Route::resource('/produto', 'ProdutoController');
